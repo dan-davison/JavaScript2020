@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CookieClicker.css" type="text/css" />
+    <title>Cookie Clicker</title>
+</head>
+<body>
+
+    <div class = "container">
+
+        <div class = "header" > 
+            <h1>You have 60 seconds to click the cookie as many times as you can!</h1> 
+        </div>
+
+        <div class="timer">
+            <span id="time">05:00</span> 
+            <p>seconds remain!</p>
+        </div>
+        
+        <div class = counter id="counter">Counter: </div>
+        <br>
+
+        <div class = "buttonContainer">
+            <button id="button" type = "button"> <img class="cookie" src = "\images\cookie.png"> </button>
+        </div>
+
+        <audio id="sound1">
+            <source src="\sounds\click1.mp3" type="audio/mp3">
+        </audio>
+
+        <audio id="sound2">
+            <source src="\sounds\click2.mp3" type="audio/mp3">
+        </audio>
+
+    </div>
+    
+    <script type="text/javascript">
+
+        let button = document.getElementById("button");
+        let counter = document.getElementById("counter");
+
+        let sound1 = document.getElementById("sound1")
+        let sound2 = document.getElementById("sound2")
+
+        let count = 1
+
+        //When button is clicked it adds to the counter
+        button.onclick = function(){
+
+            counter.innerHTML = "Counter: " + count;
+            count = count + 1;
+
+
+            button.onmousedown = function() {
+                sound1.play()
+            }
+
+            button.onmouseup = function() {
+                sound2.play()
+            }
+
+
+        }
+
+        //Timer displayed on screen
+        
+        function startTimer(duration, display) {
+            var timer = duration, seconds;
+            setInterval(function () {
+                
+                seconds = parseInt(timer % 60, 10);
+
+                
+                seconds = seconds < 10 ?  + seconds : seconds
+
+                display.textContent = seconds;
+
+                if (--timer < 0) {
+                    timer = duration;
+                }
+            }, 1000);
+        }
+
+        window.onload = function () {
+            var oneMinute = 60,
+                display = document.querySelector('#time');
+            startTimer(oneMinute, display);
+        };
+
+
+
+        //60 Second timer
+       setTimeout(function() {
+       alert("Game Over! You clicked: " + count + " times!")
+       }, 60000)
+        
+    </script>
+
+</body>
+</html>

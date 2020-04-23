@@ -1,0 +1,56 @@
+body {
+    background-color:rgb(4, 33, 49);
+    font-family: 'Spartan', sans-serif;
+    text-align: center;
+ 
+}
+
+.container {
+    padding: 20px 0px;
+    max-width: 600px;
+    height: 700px;
+    margin: 0px auto;
+    
+    background: rgba(44,115,135,1);
+
+    -webkit-box-shadow: inset 0px 0px 12px 0px rgba(0,0,0,1);
+    -moz-box-shadow: inset 0px 0px 12px 0px rgba(0,0,0,1);
+    box-shadow: inset 0px 0px 12px 0px rgba(0,0,0,1);
+
+}
+
+.header {
+    background-color: rgb(64, 166, 194);
+    color: white;
+    border-width: 10px;
+    border-color: white;
+    border-style: dotted;
+    border-width: 3px;
+    border-left: none;
+    border-right: none;
+    margin-bottom: 50px;
+}
+
+.counter {
+    color: white;
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+button {
+    width: 0px;
+    height: 0px;
+    border: none;
+    cursor:pointer;
+}
+
+.cookie {
+    width: 300px;
+    margin:-300px;
+}
+
+.timer {
+    color: white;
+    font-size: 20px;
+}
+
