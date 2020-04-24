@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CookieClicker.css" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Spartan&display=swap" rel="stylesheet">
+    <title>Super Exciting Cookie Clicker</title>
+</head>
+<body>
+
+    <style>
+        body {
+          background-image: url('images/background.jpg');
+        }
+    </style>
+
+    <div class = "container">
+        <div class = "header" id = "popUp">
+            <img class = "banner" src="images/banner.png">
+        </div>
+        <div class = "sub">
+            <h3 id="cookiesPerSecond">You are gaining 0 Cookies per second</h3>
+        </div>
+
+        <div>
+        <button id="button" type = "button"><a  class = "cookie" onclick="add()"><img class="theCookie" src="images\ANIcookie.gif"></a></button>
+        </div>
+
+        <div class = "results">
+
+            <input class ="result" type="text" id="text" disabled style= text-align:center value = 0>
+            <p>Cookies!</p>
+        </div>
+        
+        <div class = "upgrades">
+            <h3>Upgrades!<h3></h3>
+            
+            <div class="upgrade1">
+                <p class = "info">Buy 1 Auto Clicker</p>
+                <button><a onclick="buyAutoClick()"><img class="upgradeIcon" src="images/clicker.gif"></a></button>
+                <p class = "info">Cost</p>
+                <p id="costAutoClick">12 Cookies</p>
+                <p class = "info" id="ammountAutoClick">0 Owned</p>
+            </div>
+    
+            <div class="upgrade2">
+                <p class = "info">Buy 1 Bakery</p>
+                <button><a onclick="buyBakery()"><img class="upgradeIcon" src="images/bakery.gif"></a></button>
+                <p class = "info">Cost</p>
+                <p id="costBakery">15 Cookies</p>
+                <p class = "info" id="ammountBakery">0 Owned</p>
+            </div>
+            
+            <p>Dan Davison 103009408</p>
+
+        </div>
+
+    </div>
+
+    <audio id="sound1">
+        <source src="\sounds\click1.mp3" type="audio/mp3">
+    </audio>
+
+    <audio id="sound2">
+        <source src="\sounds\click2.mp3" type="audio/mp3">
+    </audio>
+
+
+    
+    
+    
+    <script>
+        var cookiecount = 0
+        var autoClick = 0
+        var bakery = 0
+        var multiplyer = 1
+
+        let button = document.getElementById("button")
+        let sound1 = document.getElementById("sound1")
+        let sound2 = document.getElementById("sound2")
+
+        button.onclick = function(){
+            button.onmousedown = function() {
+                sound1.play()
+            }
+
+            button.onmouseup = function() {
+                sound2.play()
+            }
+        }
+        
+
+        //Updates html on page
+        function update() {
+            document.getElementById("text").value = cookiecount
+            // Document Title
+            document.title = "Super Exciting Cookie Clicker - " + cookiecount + " Cookies"
+            //Upgrade 1
+            document.getElementById("ammountAutoClick").innerHTML = autoClick + " Owned"
+            document.getElementById("costAutoClick").innerHTML = ((autoClick + 1) * 12) + " Cookies"
+            //Upgrade 2
+            document.getElementById("ammountBakery").innerHTML = bakery + " Owned"
+            document.getElementById("costBakery").innerHTML = ((bakery + 1) * 15) + " Cookies"
+            // Cookies per second update
+            document.getElementById("cookiesPerSecond").innerHTML = "You are gaining " + (((autoClick) + (bakery*2))*multiplyer) + " Cookies per second"
+
+        }
+
+        //When the cookie is clicked it adds to the counter
+        function add() {
+            cookiecount = cookiecount +1
+            update()
+
+        }
+
+        //Timer function for upgrades
+        function timer() {
+            cookiecount = cookiecount + autoClick
+            cookiecount = cookiecount + bakery * 2
+            update()
+
+        }
+        setInterval(timer, 1000)
+
+        //Auto clicker upgrade
+        function buyAutoClick(){
+
+            if (cookiecount >= ((autoClick + 1) * 12)) {
+                cookiecount = cookiecount - ((autoClick + 1) * 12)
+                autoClick = autoClick + 1
+                update()
+
+            }
+
+        }
+
+        //Bakery upgrade
+        function buyBakery(){
+
+            if (cookiecount >= ((bakery + 1) * 15)) {
+                cookiecount = cookiecount - ((bakery + 1) * 15) 
+                bakery = bakery + 1
+                update()
+            }
+
+        }
+
+        //Easter Egg
+        let popUp = document.getElementById("popUp");
+        popUp.onclick  = click;
+        function click () {
+            alert("You click the Cookie, not me!")
+        }
+
+
+        
+    </script>
+
+</body>
+</html>
