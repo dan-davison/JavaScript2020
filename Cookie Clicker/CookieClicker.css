@@ -45,8 +45,18 @@ button{
 .theCookie {
     width: 250px;
     height: 250px;
-    cursor: pointer
+    cursor: pointer;
+
 }
+
+.theCookie:active {
+    transform: translateY(4px);
+}
+
+button:focus { 
+    outline: none; 
+}
+
 
 .results{
     color: white;
@@ -99,3 +109,7 @@ button{
     cursor: pointer
 
 }
+
+.upgradeIcon:active {
+    transform: translateY(4px);
+  }
