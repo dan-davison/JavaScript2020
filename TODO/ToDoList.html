@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="ToDoList.css" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"> 
+    <title>The Handy Dandy To Do List</title>
+</head>
+<body>
+    
+    <div class="container">
+
+        <div class="header">
+            <h2>The Handy Dandy</h2>
+            <h1>To Do List</h1>
+        </div>
+
+
+        <div class="inputs">
+
+            <input id="inputform" placeholder="Enter Task Here">
+            <button class = "ADD" id="addButton">ADD</button>
+
+        </div>
+
+
+        <div class="elements" id="elements"></div>
+
+        <div>
+            <h6 class = "name">Dan Davison 103009408</p>
+        </div>
+
+    </div>
+
+
+    <script type="text/javascript">
+
+        let addButton = document.getElementById("addButton");
+
+        var item = document.getElementById('inputform').value
+		var text = document.createTextNode(item)
+        var userInput = document.createElement('elements')
+
+        addButton.onclick = function () {
+
+            //Checks if input form contains characters
+            if(document.getElementById("inputform").value === "") { 
+                alert("Field cannot be empty");
+                elements.removeChild(inputElement); 
+            } 
+
+            //Elements
+            var item = document.getElementById('inputform').value;
+		    var text = document.createTextNode(item)
+
+            let inputElement = document.createElement("p");
+            inputElement.classList.add("inputElement");
+
+            let removeButton = document.createElement("button");
+            removeButton.classList.add("removeButton");
+        
+            let completeButton = document.createElement("button");
+            completeButton.classList.add("completeButton");
+
+            let inputElementText = document.createTextNode(item)
+
+            //Clears Input Form
+            document.getElementById('inputform').value = "";
+
+            //CompleteButton, Input, RemoveButton
+            inputElement.appendChild(completeButton);
+            completeButton.innerHTML = "☐";
+
+            inputElement.appendChild(inputElementText)
+
+            inputElement.appendChild(removeButton);
+            removeButton.innerHTML = "X";
+
+            elements.appendChild(inputElement);
+
+            //Removes item on list
+            removeButton.onclick = function () {
+                elements.removeChild(inputElement);
+            }
+
+            //Allows item to be marked as complete
+            completeButton.onclick = function () {
+                completeButton.innerHTML = "✓";
+                inputElement.classList.add("completeOnClick");
+            }
+
+
+        }
+
+
+
+    </script>
+</body>
+</html>
